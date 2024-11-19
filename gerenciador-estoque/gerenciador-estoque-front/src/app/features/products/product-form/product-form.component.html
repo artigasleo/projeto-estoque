@@ -1,0 +1,32 @@
+<form [formGroup]="productForm" (ngSubmit)="saveProduct()">
+  <div>
+    <label for="name">Nome:</label>
+    <input id="name" formControlName="name" />
+    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+      Nome é obrigatório.
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Descrição:</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div>
+    <label for="price">Preço:</label>
+    <input id="price" type="number" formControlName="price" />
+    <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+      Preço deve ser maior que 0.
+    </div>
+  </div>
+
+  <div>
+    <label for="stock">Estoque:</label>
+    <input id="stock" type="number" formControlName="stock" />
+    <div *ngIf="productForm.get('stock')?.invalid && productForm.get('stock')?.touched">
+      Estoque deve ser 0 ou maior.
+    </div>
+  </div>
+
+  <button type="submit">Salvar</button>
+</form>
